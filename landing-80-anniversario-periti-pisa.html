@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>80° Anniversario | Ordine dei Periti Industriali di Pisa</title>
+  <meta name="description" content="Landing page per l'80° Anniversario dell'Ordine dei Periti Industriali di Pisa, 30 ottobre 2026 presso Smy Pisa Plaza." />
+  <style>
+    :root {
+      --bg: oklch(98.5% 0.004 255);
+      --surface: oklch(100% 0 0);
+      --fg: oklch(24% 0.06 270);
+      --muted: oklch(44% 0.022 260);
+      --border: oklch(89% 0.01 255);
+      --accent: oklch(48% 0.18 25);
+      --accent-2: #e95d68;
+      --accent-brown: #6c3b35;
+      --accent-dark: #482a26;
+      --red-soft: oklch(94% 0.034 22);
+      --red-wash: oklch(97% 0.018 24);
+      --red-gradient: linear-gradient(110deg, #d93a44 0%, #f0737d 28%, #e55a66 52%, #f28a91 78%, #d93a44 100%);
+      --red-page-gradient: linear-gradient(180deg, #ffffff 0%, #fbfbfc 48%, #ffffff 100%);
+      --deep: oklch(27% 0.09 270);
+      --deep-2: oklch(18% 0.075 270);
+      --gold: oklch(70% 0.10 82);
+      --gold-strong: oklch(78% 0.13 82);
+      --gold-dark: oklch(38% 0.08 78);
+      --paper: oklch(97% 0.006 255);
+      --font-display: "Iowan Old Style", "Charter", Georgia, serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    .page {
+      min-height: 100vh;
+      position: relative;
+      background:
+        radial-gradient(circle at 86% 8%, color-mix(in oklch, var(--accent-2) 5%, transparent), transparent 34rem),
+        radial-gradient(circle at 8% 24%, color-mix(in oklch, var(--red-soft) 18%, transparent), transparent 34rem),
+        var(--red-page-gradient);
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, color-mix(in oklch, var(--accent) 2%, transparent), transparent 30%),
+        linear-gradient(315deg, color-mix(in oklch, var(--accent-2) 2%, transparent), transparent 38%);
+      opacity: 0.34;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header-band {
+      border-bottom: 1px solid color-mix(in oklch, white 18%, var(--accent));
+      background:
+        radial-gradient(circle at 12% 50%, color-mix(in oklch, white 22%, transparent), transparent 24rem),
+        linear-gradient(105deg, #b00e15 0%, #d83a46 36%, #ee7a82 74%, #b00e15 100%);
+      box-shadow: 0 14px 42px color-mix(in oklch, var(--accent) 16%, transparent);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 84px;
+      height: 84px;
+      display: block;
+      flex: 0 0 auto;
+      object-fit: contain;
+      padding: 7px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid color-mix(in oklch, white 42%, transparent);
+      box-shadow: 0 18px 38px color-mix(in oklch, var(--accent-dark) 22%, transparent);
+    }
+
+    .brand strong {
+      display: block;
+      color: white;
+      font-size: 16px;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      display: block;
+      color: color-mix(in oklch, white 78%, var(--red-soft));
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .topbar-note {
+      color: color-mix(in oklch, white 88%, var(--red-soft));
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .hero-shell {
+      width: 100%;
+      margin: 0;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-content: space-between;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: stretch;
+      min-height: calc(100svh - 121px);
+      margin: 0 0 16px;
+      padding: clamp(34px, 6vw, 84px) max(clamp(24px, 7vw, 112px), calc((100vw - 1120px) / 2));
+      overflow: hidden;
+      border-radius: 0;
+      background:
+        linear-gradient(90deg, color-mix(in oklch, var(--deep-2) 88%, transparent) 0%, color-mix(in oklch, var(--deep-2) 56%, transparent) 48%, color-mix(in oklch, var(--deep-2) 24%, transparent) 100%),
+        url("assets/pisa-piazza-miracoli.png") center 54% / cover no-repeat;
+      box-shadow: 0 28px 70px color-mix(in oklch, var(--deep) 14%, transparent);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 14% 16%, color-mix(in oklch, white 12%, transparent), transparent 20rem),
+        linear-gradient(180deg, transparent 58%, color-mix(in oklch, var(--deep-2) 54%, transparent));
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      align-self: end;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 0 0 18px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--fg);
+      font-family: var(--font-display);
+      font-size: clamp(52px, 7.1vw, 94px);
+      line-height: 0.9;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+
+    .hero .eyebrow {
+      color: color-mix(in oklch, white 78%, var(--gold));
+    }
+
+    .hero h1 {
+      color: white;
+      max-width: 760px;
+      text-shadow: 0 18px 46px color-mix(in oklch, var(--deep-2) 58%, transparent);
+    }
+
+    .anniversary {
+      color: var(--accent);
+      font-feature-settings: "lnum" 1;
+    }
+
+    .hero .anniversary {
+      color: var(--gold);
+    }
+
+    .lead {
+      max-width: 660px;
+      margin: clamp(20px, 3vw, 30px) 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.45;
+      text-wrap: pretty;
+    }
+
+    .hero .lead {
+      max-width: 620px;
+      color: color-mix(in oklch, white 82%, var(--paper));
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border: 1px solid var(--fg);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .button.primary {
+      background: var(--red-gradient);
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 18px 36px color-mix(in oklch, var(--accent) 12%, transparent);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--fg);
+    }
+
+    .hero .button.secondary {
+      border-color: color-mix(in oklch, white 70%, transparent);
+      background: color-mix(in oklch, var(--deep-2) 18%, transparent);
+      color: white;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .event-save-date {
+      border-color: color-mix(in oklch, var(--gold-strong) 78%, white);
+      background: linear-gradient(135deg, #f8d57a 0%, #d7a93b 52%, #fff0b3 100%);
+      color: var(--gold-dark);
+      box-shadow: 0 16px 34px color-mix(in oklch, var(--gold) 18%, transparent);
+      width: fit-content;
+    }
+
+    .event-card {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(20px, 4vw, 42px);
+      min-height: 0;
+      margin: 0;
+      padding: clamp(20px, 3vw, 30px);
+      background:
+        radial-gradient(circle at 92% 20%, color-mix(in oklch, white 34%, transparent), transparent 18rem),
+        linear-gradient(105deg, #c92f39 0%, #e85c67 35%, #f27d86 72%, #d6414b 100%);
+      color: white;
+      border: 1px solid color-mix(in oklch, white 20%, var(--accent));
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 46px color-mix(in oklch, var(--accent) 11%, transparent);
+    }
+
+    .hero .event-card {
+      align-self: end;
+      width: min(100%, 980px);
+      background:
+        radial-gradient(circle at 94% 16%, color-mix(in oklch, white 30%, transparent), transparent 17rem),
+        linear-gradient(105deg, color-mix(in oklch, #c92f39 92%, transparent) 0%, color-mix(in oklch, #e85c67 94%, transparent) 38%, color-mix(in oklch, #f27d86 92%, transparent) 72%, color-mix(in oklch, #d6414b 94%, transparent) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 24px 70px color-mix(in oklch, var(--deep-2) 32%, transparent);
+    }
+
+    .event-card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid color-mix(in oklch, white 22%, transparent);
+      border-radius: 18px;
+      pointer-events: none;
+    }
+
+    .event-card::after {
+      content: "80";
+      position: absolute;
+      right: clamp(16px, 3vw, 34px);
+      bottom: -34px;
+      z-index: 0;
+      color: color-mix(in oklch, white 16%, transparent);
+      font-family: var(--font-display);
+      font-size: clamp(120px, 16vw, 220px);
+      line-height: 0.8;
+      letter-spacing: -0.08em;
+      pointer-events: none;
+    }
+
+    .date-block {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 4px;
+    }
+
+    .date-block .day {
+      font-family: var(--font-display);
+      font-size: clamp(58px, 7vw, 92px);
+      line-height: 0.85;
+      color: var(--gold);
+    }
+
+    .date-block .month {
+      font-family: var(--font-mono);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: color-mix(in oklch, white 76%, var(--gold));
+    }
+
+    .venue-block {
+      position: relative;
+      z-index: 1;
+      border-left: 1px solid color-mix(in oklch, white 24%, transparent);
+      padding-left: clamp(20px, 4vw, 42px);
+    }
+
+    .venue-block h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.8vw, 46px);
+      line-height: 1;
+      color: white;
+    }
+
+    .venue-block p {
+      margin: 12px 0 0;
+      color: color-mix(in oklch, white 82%, var(--deep));
+      font-size: 16px;
+    }
+
+    .event-time {
+      display: block;
+      margin-top: 8px;
+      color: color-mix(in oklch, white 88%, var(--gold));
+      font-weight: 800;
+    }
+
+    .map-link {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid color-mix(in oklch, white 42%, transparent);
+      border-radius: 999px;
+      color: white;
+      background: color-mix(in oklch, var(--deep-2) 14%, transparent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .map-link svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+      stroke-width: 2.2;
+    }
+
+    .location-map {
+      grid-column: 1 / -1;
+    }
+
+    .location-map .map-link {
+      border-color: color-mix(in oklch, var(--accent) 32%, var(--border));
+      color: var(--accent);
+      background: color-mix(in oklch, var(--accent) 6%, white);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .venue-block small {
+      display: block;
+      margin-top: 8px;
+      color: color-mix(in oklch, white 58%, var(--deep));
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .event-action {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .section {
+      padding: clamp(46px, 7vw, 84px) 0;
+      width: 100%;
+    }
+
+    .location-section {
+      padding-top: 0;
+      padding-bottom: clamp(44px, 7vw, 86px);
+      background:
+        linear-gradient(180deg, white 0%, color-mix(in oklch, var(--paper) 64%, white) 50%, white 100%);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: clamp(28px, 6vw, 84px);
+      align-items: start;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--fg);
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.6vw, 64px);
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    .body-copy {
+      display: grid;
+      gap: 18px;
+      color: var(--muted);
+      font-size: clamp(17px, 1.4vw, 19px);
+    }
+
+    .body-copy p { margin: 0; max-width: 68ch; }
+
+    .location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      max-width: none;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .location-copy {
+      width: min(560px, calc(100% - 40px));
+      justify-self: end;
+      padding: clamp(38px, 6vw, 76px) clamp(28px, 5vw, 64px) clamp(38px, 6vw, 76px) 0;
+    }
+
+    .location-copy h2 {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1;
+    }
+
+    .location-copy p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .location-meta {
+      display: grid;
+      gap: 10px;
+      margin: 28px 0 0;
+    }
+
+    .meta-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 15px;
+    }
+
+    .meta-line span { color: var(--muted); }
+    .meta-line strong { text-align: right; }
+
+    .location-photo {
+      min-height: clamp(430px, 44vw, 620px);
+      color: white;
+      display: grid;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+    }
+
+    .location-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 35%, color-mix(in oklch, var(--deep-2) 74%, transparent)),
+        linear-gradient(90deg, color-mix(in oklch, var(--deep-2) 34%, transparent), transparent 56%);
+    }
+
+    .photo-caption {
+      align-self: end;
+      justify-self: start;
+      position: absolute;
+      left: clamp(22px, 4vw, 38px);
+      right: clamp(22px, 4vw, 38px);
+      bottom: clamp(22px, 4vw, 38px);
+      z-index: 1;
+      max-width: 34ch;
+    }
+
+    .photo-caption span {
+      display: block;
+      color: color-mix(in oklch, white 64%, var(--gold));
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .photo-caption p {
+      margin: 0;
+      color: color-mix(in oklch, white 88%, var(--deep));
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .closing {
+      width: 100%;
+      max-width: none;
+      margin-top: 0;
+      padding: clamp(26px, 4vw, 48px) max(clamp(24px, 7vw, 112px), calc((100vw - 1120px) / 2));
+      background:
+        radial-gradient(circle at 88% 16%, color-mix(in oklch, white 22%, transparent), transparent 16rem),
+        linear-gradient(110deg, #cf3741 0%, #eb6871 44%, #f08a90 100%);
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      border-radius: 0;
+    }
+
+    .closing h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5vw, 70px);
+      line-height: 1;
+    }
+
+    .closing p {
+      margin: 12px 0 0;
+      color: color-mix(in oklch, white 72%, var(--fg));
+      font-size: 17px;
+    }
+
+    .closing .button {
+      border-color: color-mix(in oklch, var(--gold-strong) 78%, white);
+      background: linear-gradient(135deg, #f8d57a 0%, #d7a93b 52%, #fff0b3 100%);
+      color: var(--gold-dark);
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .section-grid,
+      .location,
+      .closing {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: calc(100svh - 103px);
+        background:
+          linear-gradient(180deg, color-mix(in oklch, var(--deep-2) 86%, transparent) 0%, color-mix(in oklch, var(--deep-2) 54%, transparent) 62%, color-mix(in oklch, var(--deep-2) 30%, transparent) 100%),
+          url("assets/pisa-piazza-miracoli.png") center 48% / cover no-repeat;
+      }
+
+      .event-card { grid-template-columns: auto minmax(0, 1fr); }
+      .location-copy {
+        width: min(100% - 40px, 680px);
+        justify-self: center;
+        padding: clamp(32px, 6vw, 52px) 0;
+      }
+      .location-photo { min-height: 420px; }
+      .closing .button { justify-self: start; }
+    }
+
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      .topbar {
+        align-items: center;
+        gap: 14px;
+      }
+      .brand { gap: 10px; }
+      .brand-logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+      }
+      .brand strong { font-size: 14px; }
+      .brand span { display: none; }
+      .topbar-note {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+      }
+      .hero {
+        min-height: calc(100svh - 91px);
+        margin-top: 0;
+        padding: 28px 18px;
+        border-radius: 0;
+      }
+      h1 { font-size: clamp(46px, 17vw, 72px); }
+      .actions { flex-direction: column; }
+      .button { width: 100%; }
+      .event-save-date { width: 100%; }
+      .event-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 22px;
+      }
+      .venue-block {
+        border-left: 0;
+        border-top: 1px solid color-mix(in oklch, white 24%, transparent);
+        padding-left: 0;
+        padding-top: 18px;
+      }
+      .meta-line { display: grid; gap: 4px; }
+      .meta-line strong { text-align: left; }
+      .event-action {
+        justify-content: stretch;
+        min-width: 0;
+      }
+      .location-copy { width: min(100% - 28px, 680px); }
+      .location-photo { min-height: 340px; }
+      .closing { padding-inline: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="header-band">
+      <div class="wrap">
+        <header class="topbar" aria-label="Intestazione evento">
+          <div class="brand">
+            <img class="brand-logo" src="assets/logo-periti-pittogramma.png" alt="Periti Industriali Pisa" width="100" height="100">
+            <div>
+              <strong>Ordine dei Periti Industriali</strong>
+              <span>della provincia di Pisa</span>
+            </div>
+          </div>
+          <div class="topbar-note">80° Anniversario · Pisa</div>
+        </header>
+      </div>
+    </div>
+
+    <div class="hero-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title"><span class="anniversary">80°</span> Anniversario dell’Ordine</h1>
+          <p class="lead">Una giornata dedicata alla storia, alla responsabilità pubblica e al futuro della professione dei Periti Industriali della provincia di Pisa.</p>
+        </div>
+        <aside class="event-card" aria-label="Dettagli principali dell'evento">
+          <div class="date-block">
+            <span class="day">30</span>
+            <span class="month">ottobre 2026</span>
+          </div>
+          <div class="venue-block">
+            <h2>Smy Pisa Plaza</h2>
+            <p>Via Caduti del lavoro, 46 · Pisa <span class="event-time">10:00-14:30 · lunch celebrativo</span></p>
+            <small>ex Tower Plaza</small>
+            <div class="event-action">
+              <a class="button event-save-date" href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0AVERSION%3A2.0%0ABEGIN%3AVEVENT%0ADTSTART%3A20261030T100000%0ADTEND%3A20261030T143000%0ASUMMARY%3A80%C2%B0%20Anniversario%20Ordine%20Periti%20Industriali%20Pisa%0ALOCATION%3ASmy%20Pisa%20Plaza%2C%20Via%20Caduti%20del%20lavoro%2046%2C%20Pisa%0ADESCRIPTION%3AEvento%20celebrativo%20con%20lunch%20celebrativo.%0AEND%3AVEVENT%0AEND%3AVCALENDAR" download="80-anniversario-periti-pisa.ics">Save the date</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <section class="section location-section" aria-labelledby="location-title">
+      <div class="wrap location">
+        <div class="location-copy">
+          <h2 id="location-title">Smy Pisa Plaza</h2>
+          <p>La sede scelta è in Via Caduti del lavoro, 46 a Pisa, in una struttura congressuale facilmente riconoscibile anche come ex Tower Plaza.</p>
+          <div class="location-meta">
+            <div class="meta-line">
+              <span>Indirizzo</span>
+              <strong>Via Caduti del lavoro, 46</strong>
+            </div>
+            <div class="meta-line">
+              <span>Città</span>
+              <strong>Pisa</strong>
+            </div>
+            <div class="meta-line">
+              <span>Orario</span>
+              <strong>10:00-14:30</strong>
+            </div>
+            <div class="meta-line">
+              <span>Momento conviviale</span>
+              <strong>Lunch celebrativo</strong>
+            </div>
+            <div class="meta-line">
+              <span>Riferimento</span>
+              <strong>ex Tower Plaza</strong>
+            </div>
+            <div class="meta-line location-map">
+              <span>Mappa</span>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Smy%20Pisa%20Plaza%20Via%20Caduti%20del%20lavoro%2046%20Pisa" target="_blank" rel="noopener" aria-label="Apri la mappa dello Smy Pisa Plaza">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Apri la mappa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="location-photo" aria-label="Foto dello Smy Pisa Plaza">
+          <img src="assets/smy-pisa-plaza-facciata.jpg" alt="Facciata dello Smy Pisa Plaza con giardino" loading="lazy" decoding="async">
+          <div class="photo-caption">
+            <span>Sede dell’evento</span>
+            <p>Smy Pisa Plaza, struttura congressuale in Via Caduti del lavoro, 46.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
