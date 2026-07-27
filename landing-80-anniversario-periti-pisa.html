@@ -127,14 +127,22 @@
       margin-top: 2px;
     }
 
-    .topbar-note {
-      color: color-mix(in oklch, white 88%, var(--red-soft));
+    .cover-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 9px 13px;
+      border: 1px solid color-mix(in oklch, white 34%, transparent);
+      border-radius: 999px;
+      background: color-mix(in oklch, var(--deep-2) 40%, transparent);
+      color: color-mix(in oklch, white 88%, var(--gold));
       font-family: var(--font-mono);
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.16em;
-      text-align: right;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      box-shadow: 0 16px 36px color-mix(in oklch, var(--deep-2) 26%, transparent);
     }
 
     .hero-shell {
@@ -681,12 +689,6 @@
         line-height: 1.12;
       }
       .brand span { display: none; }
-      .topbar-note {
-        max-width: 8ch;
-        font-size: 9px;
-        line-height: 1.25;
-        letter-spacing: 0.1em;
-      }
       .hero {
         min-height: calc(100svh - 75px);
         margin-top: 0;
@@ -812,7 +814,6 @@
     }
 
     @media (max-width: 380px) {
-      .topbar-note { display: none; }
       .brand strong { max-width: 21ch; }
       .hero {
         min-height: auto;
@@ -838,7 +839,6 @@
               <span>della provincia di Pisa</span>
             </div>
           </div>
-          <div class="topbar-note">80° Anniversario · Pisa</div>
         </header>
       </div>
     </div>
@@ -846,6 +846,7 @@
     <div class="hero-shell">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
+          <p class="cover-kicker">80° ANNIVERSARIO - PISA</p>
           <h1 id="hero-title">Essere Perito Industriale, oggi.</h1>
           <p class="lead">80 anni di storia per interpretare il cambiamento del ruolo della professione sull’onda della trasformazione tecnologica, economica e sociale.</p>
         </div>
