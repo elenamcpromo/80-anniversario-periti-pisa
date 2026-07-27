@@ -131,18 +131,21 @@
       display: inline-flex;
       align-items: center;
       width: fit-content;
-      margin: 0 0 18px;
-      padding: 9px 13px;
-      border: 1px solid color-mix(in oklch, white 34%, transparent);
+      margin: 0 0 22px;
+      padding: 13px 18px;
+      border: 1px solid color-mix(in oklch, var(--gold) 54%, white);
       border-radius: 999px;
-      background: color-mix(in oklch, var(--deep-2) 40%, transparent);
-      color: color-mix(in oklch, white 88%, var(--gold));
+      background:
+        linear-gradient(135deg, color-mix(in oklch, var(--deep-2) 58%, transparent), color-mix(in oklch, var(--accent) 36%, transparent));
+      color: color-mix(in oklch, white 92%, var(--gold));
       font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      font-size: clamp(17px, 1.5vw, 24px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      box-shadow: 0 16px 36px color-mix(in oklch, var(--deep-2) 26%, transparent);
+      box-shadow: 0 18px 44px color-mix(in oklch, var(--deep-2) 36%, transparent);
+      text-shadow: 0 8px 24px color-mix(in oklch, var(--deep-2) 42%, transparent);
     }
 
     .hero-shell {
@@ -713,6 +716,12 @@
         font-size: 16px;
         line-height: 1.38;
       }
+      .cover-kicker {
+        margin-bottom: 16px;
+        padding: 10px 13px;
+        font-size: clamp(14px, 4.2vw, 17px);
+        letter-spacing: 0.12em;
+      }
       .actions { flex-direction: column; }
       .button {
         width: 100%;
@@ -821,6 +830,10 @@
       }
       .hero-copy { padding-top: 0; }
       h1 { font-size: 40px; }
+      .cover-kicker {
+        font-size: 13px;
+        letter-spacing: 0.1em;
+      }
       .hero .lead { font-size: 15px; }
       .date-block .day { font-size: 52px; }
       .venue-block h2 { font-size: 28px; }
