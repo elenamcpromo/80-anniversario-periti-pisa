@@ -1,3 +1,11 @@
+# La pagina resta esclusa dai motori di ricerca.
+# Eccezione per i crawler che generano l'anteprima dei link nelle chat:
+# senza questa deroga WhatsApp non mostra alcuna preview.
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
 User-agent: *
 Disallow: /
-
