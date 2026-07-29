@@ -1,3 +1,5 @@
 tmp/
 .DS_Store
 *.artifact.json
+token.txt
+.wrangler/
