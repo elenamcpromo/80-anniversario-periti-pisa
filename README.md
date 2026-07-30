@@ -15,12 +15,12 @@ Landing page per l'80° Anniversario dell'Ordine dei Periti Industriali di Pisa.
 - `landing-80-anniversario-periti-pisa.html` - copia nominata della landing
 - `assets/` - logo e immagini usate nella pagina
 - `brand-spec.md` - note visive e fonti asset
-- `80-anniversario-periti-pisa.pdf` - locandina A3 generata dalla landing
+- `80-anniversario-periti-pisa.pdf` - PDF A4 su due pagine generato dalla landing
 
-## Rigenerare la locandina PDF
+## Rigenerare il PDF
 
-Il blocco `@media print` in `index.html` riduce la pagina a un'unica locandina A3
-(solo il blocco hero). Per rigenerare il PDF:
+Il blocco `@media print` in `index.html` impagina la landing su due pagine A4
+verticali: copertina (hero) e scheda sede. Per rigenerare il PDF:
 
 ```sh
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \

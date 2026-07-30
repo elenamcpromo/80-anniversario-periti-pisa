@@ -854,14 +854,14 @@
       .venue-block h2 { font-size: 28px; }
     }
 
-    /* Poster: la stampa produce un'unica locandina A3 con il solo blocco hero. */
+    /* Stampa: due pagine A4 verticali, copertina (hero) e scheda sede.
+       Ogni superficie semitrasparente (ombre, gradienti con alpha) obbliga il PDF a
+       incorporare una soft mask a piena pagina: file pesante e apertura lenta. In
+       stampa si usano quindi solo colori opachi, con un'unica velatura ad alpha
+       costante sopra la foto dell'hero. */
     @media print {
-      @page { size: A3 portrait; margin: 0; }
+      @page { size: A4 portrait; margin: 0; }
 
-      /* Ogni superficie semitrasparente (ombre, gradienti con alpha) obbliga il PDF
-         a incorporare una soft mask a piena pagina: file pesante e apertura lenta.
-         In stampa si usano solo colori opachi, con un'unica velatura ad alpha
-         costante sopra la foto. */
       * {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -876,8 +876,6 @@
 
       .page {
         min-height: 0;
-        height: calc(100vh - 2px);
-        overflow: hidden;
         background: white;
       }
 
@@ -888,21 +886,30 @@
         background: linear-gradient(105deg, #b00e15 0%, #d83a46 36%, #ee7a82 74%, #b00e15 100%);
       }
 
-      .brand-logo { border-color: #f0b9bd; }
+      .header-band .wrap {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0 44px;
+      }
 
-      .location-section,
-      .event-save-date { display: none; }
+      .topbar { padding: 14px 0; }
+      .brand-logo { width: 76px; height: 76px; border-color: #f0b9bd; }
+      .brand strong { font-size: 17px; }
+      .brand span { font-size: 14px; }
 
-      .topbar { padding: 26px 0; }
-      .brand-logo { width: 104px; height: 104px; }
-      .brand strong { font-size: 22px; }
-      .brand span { font-size: 17px; }
+      .event-save-date,
+      .location-map { display: none; }
+
+      /* Pagina 1: copertina */
+      .hero-shell { break-after: page; }
 
       .hero {
         min-height: 0;
-        height: calc(100vh - 157px);
+        height: calc(100vh - 107px);
         margin: 0;
-        padding: 64px max(64px, calc((100vw - 1120px) / 2));
+        padding: 44px;
+        gap: 28px;
         break-inside: avoid;
         background-image: url("assets/pisa-piazza-miracoli.webp");
         background-position: center 54%;
@@ -917,42 +924,85 @@
       }
 
       .cover-kicker {
-        font-size: 28px;
-        letter-spacing: 0.1em;
+        font-size: 20px;
+        letter-spacing: 0.09em;
         white-space: nowrap;
-        margin-bottom: 34px;
-        padding: 20px 30px;
+        margin-bottom: 24px;
+        padding: 14px 20px;
         border-color: #c8a05c;
         background: linear-gradient(135deg, #1d1b3a 0%, #6a2230 100%);
       }
 
       .hero h1 {
-        font-size: 104px;
-        max-width: 13ch;
+        font-size: 58px;
+        max-width: 12ch;
       }
 
       .hero .lead {
-        max-width: 780px;
-        margin-top: 34px;
-        font-size: 27px;
+        max-width: 100%;
+        margin-top: 24px;
+        font-size: 18px;
       }
 
       .hero .event-card {
-        gap: 48px;
-        padding: 38px;
+        gap: 24px;
+        padding: 24px;
         border-color: #e0777f;
         background: linear-gradient(105deg, #b81f2c 0%, #d6414b 40%, #e85c67 74%, #c92f39 100%);
       }
 
-      .event-card::before { border-color: #e8909a; }
+      .event-card::before { inset: 10px; border-color: #e8909a; }
       .event-card::after { display: none; }
-      .venue-block { border-left-color: #e8909a; }
+      .venue-block { border-left-color: #e8909a; padding-left: 24px; }
 
-      .date-block .day { font-size: 116px; }
-      .date-block .month { font-size: 19px; }
-      .venue-block h2 { font-size: 56px; }
-      .venue-block p { font-size: 22px; }
-      .venue-block small { font-size: 15px; }
+      .date-block .day { font-size: 68px; }
+      .date-block .month { font-size: 13px; }
+      .venue-block h2 { font-size: 32px; }
+      .venue-block p { font-size: 15px; margin-top: 8px; }
+      .venue-block small { font-size: 11px; }
+
+      /* Pagina 2: scheda sede, testo sopra e foto a tutta pagina sotto */
+      .location-section {
+        height: calc(100vh - 2px);
+        padding: 0;
+        background: white;
+        break-inside: avoid;
+      }
+
+      .location {
+        height: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        border: none;
+      }
+
+      .location-copy {
+        width: auto;
+        justify-self: stretch;
+        padding: 56px 44px 38px;
+      }
+
+      .location-copy h2 { font-size: 38px; margin-bottom: 14px; }
+      .location-copy p { font-size: 17px; margin-bottom: 0; }
+      .location-meta { margin-top: 26px; gap: 12px; }
+      .meta-line { font-size: 16px; padding-top: 13px; }
+
+      .location-photo { min-height: 0; }
+
+      /* Sfumatura sostituita da una barra opaca sotto la didascalia. */
+      .location-photo::after { display: none; }
+
+      .photo-caption {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: none;
+        padding: 20px 44px;
+        background: #141731;
+      }
+
+      .photo-caption span { font-size: 12px; }
+      .photo-caption p { font-size: 17px; }
     }
   </style>
 </head>
