@@ -2,7 +2,7 @@
 # Genera i due PDF a partire dalla landing.
 #
 #   80-anniversario-periti-pisa.pdf          A4 verticale, 2 pagine (copertina + sede)
-#   locandina-80-anniversario-periti-pisa.pdf A3 orizzontale, 1 pagina (due pannelli)
+#   80-anniversario-periti-pisa-one-page.pdf A3 orizzontale, 1 pagina (due pannelli)
 #
 # Il primo usa il blocco @media print di index.html, il secondo ci sovrappone
 # print-poster.css. Serve Google Chrome e Ghostscript (brew install ghostscript).
@@ -39,4 +39,4 @@ echo "Locandina A3 orizzontale:"
 # print-poster.css va dopo lo <style> della pagina per vincere nella cascata.
 sed 's#</head>#  <link rel="stylesheet" media="print" href="print-poster.css">\n</head>#' \
   index.html >"$TMP_HTML"
-render "$TMP_HTML" locandina-80-anniversario-periti-pisa.pdf
+render "$TMP_HTML" 80-anniversario-periti-pisa-one-page.pdf

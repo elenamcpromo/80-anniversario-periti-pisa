@@ -16,7 +16,7 @@ Landing page per l'80° Anniversario dell'Ordine dei Periti Industriali di Pisa.
 - `assets/` - logo e immagini usate nella pagina
 - `brand-spec.md` - note visive e fonti asset
 - `80-anniversario-periti-pisa.pdf` - PDF A4 verticale, 2 pagine (copertina + sede)
-- `locandina-80-anniversario-periti-pisa.pdf` - locandina A3 orizzontale, 1 pagina
+- `80-anniversario-periti-pisa-one-page.pdf` - A3 orizzontale, 1 pagina
 - `build-pdf.sh` - genera entrambi i PDF
 - `print-poster.css` - override di stampa per la sola locandina A3
 
