@@ -44,3 +44,8 @@ Due accortezze, entrambe necessarie per ottenere PDF leggeri e veloci da aprire:
   a incorporare soft mask a piena pagina da decine di megapixel, che gonfiano il
   file e rallentano l'apertura. Il passaggio con `gs` ricomprime in JPEG le
   immagini, che Chrome esporta come bitmap non compressi.
+- `-sColorConversionStrategy=sRGB` nel comando `gs` non e' opzionale: senza,
+  Ghostscript riscrive il profilo ICC di Chrome come stream vuoto e Anteprima,
+  WhatsApp e in generale i visualizzatori basati su Quartz non disegnano le
+  immagini che lo referenziano. Chrome e Ghostscript ripiegano su DeviceRGB,
+  quindi il difetto non si nota provando il PDF nel browser.

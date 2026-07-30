@@ -23,8 +23,14 @@ render() { # $1 = file html, $2 = pdf di destinazione
     --print-to-pdf="$TMP_PDF" "file://$PWD/$1" >/dev/null 2>&1
 
   # Chrome esporta le immagini come bitmap non compressi: gs le ricomprime in JPEG.
+  #
+  # -sColorConversionStrategy=sRGB e' obbligatorio: senza, gs copia il profilo
+  # ICC di Chrome come stream vuoto (<</N 3/Length 0>>) e le immagini che lo
+  # referenziano spariscono in Anteprima/WhatsApp (Quartz non costruisce lo
+  # spazio colore e salta il disegno). Chrome e gs cadono invece su DeviceRGB
+  # e mostrano il PDF corretto, per questo il problema non si vede da browser.
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dNOPAUSE -dBATCH -dQUIET \
-    -dDetectDuplicateImages=true \
+    -dDetectDuplicateImages=true -sColorConversionStrategy=sRGB \
     -dAutoFilterColorImages=false -dColorImageFilter=/DCTEncode -dJPEGQ=90 \
     -dColorImageDownsampleType=/Bicubic -dColorImageResolution=220 \
     -dAutoFilterGrayImages=false -dGrayImageFilter=/DCTEncode -dGrayImageResolution=220 \
