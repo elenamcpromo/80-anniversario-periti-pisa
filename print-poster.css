@@ -1,0 +1,68 @@
+/* Override di stampa per la locandina A3 orizzontale su pagina singola.
+   Non e' collegato a index.html: viene iniettato solo da build-pdf.sh, cosi'
+   il Cmd+P della pagina online resta il PDF A4 su due pagine.
+   Vale la stessa disciplina del blocco @media print di index.html: solo colori
+   opachi piu' un'unica velatura ad alpha costante, altrimenti Chrome incorpora
+   soft mask a piena pagina che appesantiscono e rallentano il PDF. */
+@media print {
+  @page { size: A3 landscape; margin: 0; }
+
+  /* Annulla le regole specifiche dell'impaginazione A4 su due pagine. */
+  .hero-shell { break-after: auto; }
+  .location-section { height: auto; }
+
+  /* Fascia logo a tutta larghezza, poi i due pannelli affiancati. */
+  .page {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+    height: calc(100vh - 2px);
+    overflow: hidden;
+    background: white;
+  }
+
+  .header-band { grid-column: 1 / -1; }
+  .hero-shell { min-width: 0; }
+
+  /* .wrap centrerebbe il logo su 1120px: in A3 orizzontale va allineato
+     al bordo del pannello hero. */
+  .header-band .wrap { padding: 0 56px; }
+
+  .topbar { padding: 20px 0; }
+  .brand-logo { width: 88px; height: 88px; }
+  .brand strong { font-size: 19px; }
+  .brand span { font-size: 15px; }
+
+  /* Pannello sinistro: hero */
+  .hero {
+    height: 100%;
+    padding: 52px 56px;
+    gap: 32px;
+  }
+
+  .cover-kicker {
+    font-size: 23px;
+    margin-bottom: 26px;
+    padding: 15px 24px;
+  }
+
+  .hero h1 { font-size: 78px; }
+  .hero .lead { margin-top: 26px; font-size: 21px; }
+  .hero .event-card { gap: 30px; padding: 26px; }
+  .venue-block { padding-left: 26px; }
+
+  .date-block .day { font-size: 84px; }
+  .date-block .month { font-size: 15px; }
+  .venue-block h2 { font-size: 38px; }
+  .venue-block p { font-size: 17px; }
+  .venue-block small { font-size: 12px; }
+
+  /* Pannello destro: scheda sede, testo sopra e foto sotto */
+  .location-section { min-width: 0; }
+  .location { height: 100%; }
+  .location-copy { padding: 46px 52px 34px; }
+  .location-copy h2 { font-size: 40px; }
+  .location-meta { margin-top: 26px; }
+  .photo-caption { padding: 20px 52px; }
+}

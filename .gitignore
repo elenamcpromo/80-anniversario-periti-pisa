@@ -3,3 +3,5 @@ tmp/
 *.artifact.json
 token.txt
 .wrangler/
+.build-poster.html
+.build-raw.pdf
