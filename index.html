@@ -853,6 +853,107 @@
       .date-block .day { font-size: 52px; }
       .venue-block h2 { font-size: 28px; }
     }
+
+    /* Poster: la stampa produce un'unica locandina A3 con il solo blocco hero. */
+    @media print {
+      @page { size: A3 portrait; margin: 0; }
+
+      /* Ogni superficie semitrasparente (ombre, gradienti con alpha) obbliga il PDF
+         a incorporare una soft mask a piena pagina: file pesante e apertura lenta.
+         In stampa si usano solo colori opachi, con un'unica velatura ad alpha
+         costante sopra la foto. */
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      html { scroll-behavior: auto; }
+      body { background: white; }
+
+      .page {
+        min-height: 0;
+        height: calc(100vh - 2px);
+        overflow: hidden;
+        background: white;
+      }
+
+      .page::before { display: none; }
+
+      .header-band {
+        border-bottom-color: #c4353f;
+        background: linear-gradient(105deg, #b00e15 0%, #d83a46 36%, #ee7a82 74%, #b00e15 100%);
+      }
+
+      .brand-logo { border-color: #f0b9bd; }
+
+      .location-section,
+      .event-save-date { display: none; }
+
+      .topbar { padding: 26px 0; }
+      .brand-logo { width: 104px; height: 104px; }
+      .brand strong { font-size: 22px; }
+      .brand span { font-size: 17px; }
+
+      .hero {
+        min-height: 0;
+        height: calc(100vh - 157px);
+        margin: 0;
+        padding: 64px max(64px, calc((100vw - 1120px) / 2));
+        break-inside: avoid;
+        background-image: url("assets/pisa-piazza-miracoli.webp");
+        background-position: center 54%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      /* Velatura ad alpha uniforme: nessuna soft mask, solo un valore /ca nel PDF. */
+      .hero::before {
+        background: #141731;
+        opacity: 0.58;
+      }
+
+      .cover-kicker {
+        font-size: 28px;
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+        margin-bottom: 34px;
+        padding: 20px 30px;
+        border-color: #c8a05c;
+        background: linear-gradient(135deg, #1d1b3a 0%, #6a2230 100%);
+      }
+
+      .hero h1 {
+        font-size: 104px;
+        max-width: 13ch;
+      }
+
+      .hero .lead {
+        max-width: 780px;
+        margin-top: 34px;
+        font-size: 27px;
+      }
+
+      .hero .event-card {
+        gap: 48px;
+        padding: 38px;
+        border-color: #e0777f;
+        background: linear-gradient(105deg, #b81f2c 0%, #d6414b 40%, #e85c67 74%, #c92f39 100%);
+      }
+
+      .event-card::before { border-color: #e8909a; }
+      .event-card::after { display: none; }
+      .venue-block { border-left-color: #e8909a; }
+
+      .date-block .day { font-size: 116px; }
+      .date-block .month { font-size: 19px; }
+      .venue-block h2 { font-size: 56px; }
+      .venue-block p { font-size: 22px; }
+      .venue-block small { font-size: 15px; }
+    }
   </style>
 </head>
 <body>
